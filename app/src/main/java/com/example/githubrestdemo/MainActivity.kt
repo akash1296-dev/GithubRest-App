@@ -37,52 +37,24 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 d("aakash","onFailure")
             }
-
         })
 
         // ----------------------------------------------------------------
-
-        
-
-
-
         //-------------------------------------------------------------------
         /*val users = mutableListOf<User>()
         for(i in 0..100) {
             users.add(User("Aakash", "Yadav","akash1296@gmail.com","https://abc.com"))
         }*/
-
-
     }
 
     fun showDetails( v : View1) {
-        //val it = Intent(this, UserAdapterDetails::class.java)
-
-        val api2 = retrofit.create(ApiServiceDetails::class.java)
-       api2.fetchAllUsers().enqueue(object : Callback<List<User>> {
-
-           override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                //d("akash","onResponse${response.body()!![1].avatar_url}")
-                showDetailsOfUser(response.body()!!)
-           }
-
-           override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-           }
-
-
-       })
-        //startActivity(it)
+        val mytext: String = loginName.text as String
+        println(mytext)
+        val it = Intent(this, UserDetailsActivity::class.java)
+        it.putExtra("login",mytext)
+        startActivity(it)
         Log.d(Companion.TAG, "onClickHandler")
 
-    }
-
-
-    private fun showDetailsOfUser(users: List<User>) {
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = UserAdapterDetails(users)
-        }
     }
 
     private fun showData(users: List<User>) {
