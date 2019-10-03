@@ -1,8 +1,8 @@
-package com.example.githubrestdemo
+package com.example.githubrestdemo.Model
 
+import com.example.githubrestdemo.User
 import retrofit2.http.GET
 import retrofit2.http.Path
-import java.util.*
 
 interface ApiServiceDetails {
     @GET("/users/{login}")

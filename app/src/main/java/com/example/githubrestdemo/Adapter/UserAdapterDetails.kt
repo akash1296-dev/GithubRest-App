@@ -1,4 +1,4 @@
-package com.example.githubrestdemo
+package com.example.githubrestdemo.Adapter
 
 
 
@@ -8,12 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubrestdemo.R
+import com.example.githubrestdemo.User
 import kotlinx.android.synthetic.main.activity_user_details.view.*
 
 
 class UserAdapterDetails(private  val users: User) : RecyclerView.Adapter<UserAdapterDetails.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_user_details, parent, false)
+
         return ViewHolder(view)
     }
 

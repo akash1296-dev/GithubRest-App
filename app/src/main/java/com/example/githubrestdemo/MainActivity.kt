@@ -1,30 +1,32 @@
 package com.example.githubrestdemo
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Log.d
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.user_row.*
+import androidx.recyclerview.widget.RecyclerView
+import com.example.githubrestdemo.Adapter.UserAdapter
+import com.example.githubrestdemo.Model.ApiService
+//import kotlinx.android.synthetic.main.avtivity_user_row.*
+//import kotlinx.android.synthetic.main.user_row.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import android.view.View as View1
 
 class MainActivity : AppCompatActivity() {
+    private var recyclerView: RecyclerView? = null
 
-    val retrofit = Retrofit.Builder().baseUrl("https://api.github.com")
+
+    private val retrofit = Retrofit.Builder().baseUrl("https://api.github.com")
         .addConverterFactory(GsonConverterFactory.create()).build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        recyclerView = findViewById(R.id.recyclerView)
 
         val api = retrofit.create(ApiService::class.java)
         api.fetchAllUsers().enqueue(object : Callback<List<User>>{
@@ -37,6 +39,8 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 d("aakash","onFailure")
             }
+
+
         })
 
         // ----------------------------------------------------------------
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }*/
     }
 
-    fun showDetails( v : View1) {
+    /*fun showDetails( v : View1) {
         val mytext: String = loginName.text as String
         println(mytext)
         val it = Intent(this, UserDetailsActivity::class.java)
@@ -55,10 +59,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(it)
         Log.d(Companion.TAG, "onClickHandler")
 
-    }
+    }*/
 
     private fun showData(users: List<User>) {
-        recyclerView.apply {
+        recyclerView?.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = UserAdapter(users)
         }

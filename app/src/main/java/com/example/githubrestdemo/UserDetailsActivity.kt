@@ -1,13 +1,12 @@
 package com.example.githubrestdemo
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.JsonObject
+import com.example.githubrestdemo.Adapter.UserAdapterDetails
+import com.example.githubrestdemo.Model.ApiServiceDetails
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -66,9 +65,9 @@ class UserDetailsActivity : AppCompatActivity() {
     private fun showDetailsOfUser(users: User) {
         println(users)
         recyclerView?.apply {
-            println("[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]")
+            //println("[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]")
             layoutManager = LinearLayoutManager(this@UserDetailsActivity)
-            println("//////////////////////////////////////////////////////////")
+            //println("//////////////////////////////////////////////////////////")
             adapter = UserAdapterDetails(users)
         }
     }
