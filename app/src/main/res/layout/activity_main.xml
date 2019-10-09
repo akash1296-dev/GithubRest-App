@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -18,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <LinearLayout
         android:id="@+id/btnLinear"
         android:layout_width="match_parent"
@@ -28,6 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/recyclerView">
 
         <Button
+            android:id="@+id/btnEvents"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -35,10 +38,13 @@
             android:text="Show All Events" />
 
         <Button
+            android:id="@+id/btn12"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Public Urls" />
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

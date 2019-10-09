@@ -1,6 +1,5 @@
 package com.example.githubrestdemo.Model
 
-import com.example.githubrestdemo.User
 import retrofit2.http.GET
 import retrofit2.http.Path
 

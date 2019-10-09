@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubrestdemo.R
-import com.example.githubrestdemo.User
+import com.example.githubrestdemo.Model.User
 import kotlinx.android.synthetic.main.activity_user_details.view.*
 
 

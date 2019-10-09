@@ -1,14 +1,18 @@
 package com.example.githubrestdemo
 
-import androidx.appcompat.app.AppCompatActivity
+//import kotlinx.android.synthetic.main.avtivity_user_row.*
+//import kotlinx.android.synthetic.main.user_row.*
 import android.os.Bundle
 import android.util.Log.d
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubrestdemo.Adapter.UserAdapter
+import com.example.githubrestdemo.Fragments.EmojiFragment
 import com.example.githubrestdemo.Model.ApiService
-//import kotlinx.android.synthetic.main.avtivity_user_row.*
-//import kotlinx.android.synthetic.main.user_row.*
+import com.example.githubrestdemo.Model.User
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
 
         val api = retrofit.create(ApiService::class.java)
-        api.fetchAllUsers().enqueue(object : Callback<List<User>>{
+        api.fetchAllUsers().enqueue(object : Callback<List<User>> {
 
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 showData(response.body()!!)
@@ -37,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                d("aakash","onFailure")
+                d("aakash", "onFailure")
             }
 
 
@@ -49,6 +53,20 @@ class MainActivity : AppCompatActivity() {
         for(i in 0..100) {
             users.add(User("Aakash", "Yadav","akash1296@gmail.com","https://abc.com"))
         }*/
+        btnEvents.setOnClickListener {
+            loadFragment(EmojiFragment())
+        }
+
+    }
+
+    private fun loadFragment(emojiFragment: EmojiFragment) {
+        val ft = supportFragmentManager.beginTransaction()
+        //ft.replace(R.id.root, emojiFragment)
+        ft.replace(R.id.root, emojiFragment)
+        ft.addToBackStack(null)
+        recyclerView?.visibility = View.GONE
+        ft.commit()
+
     }
 
     /*fun showDetails( v : View1) {

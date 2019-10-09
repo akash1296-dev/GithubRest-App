@@ -1,4 +1,4 @@
-package com.example.githubrestdemo
+package com.example.githubrestdemo.Model
 
 data class User(
     val login: String,

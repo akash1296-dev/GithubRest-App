@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubrestdemo.Adapter.UserAdapterDetails
 import com.example.githubrestdemo.Model.ApiServiceDetails
+import com.example.githubrestdemo.Model.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -65,9 +66,7 @@ class UserDetailsActivity : AppCompatActivity() {
     private fun showDetailsOfUser(users: User) {
         println(users)
         recyclerView?.apply {
-            //println("[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]")
             layoutManager = LinearLayoutManager(this@UserDetailsActivity)
-            //println("//////////////////////////////////////////////////////////")
             adapter = UserAdapterDetails(users)
         }
     }
