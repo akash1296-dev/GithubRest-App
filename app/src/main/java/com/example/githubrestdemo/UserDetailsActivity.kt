@@ -31,7 +31,6 @@ class UserDetailsActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView2)
 
-
         api2.fetchAllUsers(result).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 Log.d(
@@ -39,7 +38,6 @@ class UserDetailsActivity : AppCompatActivity() {
                     "OnResponse"
                 )                                                         //onResponse${response.body()!![1].avatar_url}
                 showDetailsOfUser(response.body()!!)
-
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
@@ -56,10 +54,7 @@ class UserDetailsActivity : AppCompatActivity() {
                  t.printStackTrace()
                  Log.d("onFailure","-----------")
              }*/
-
-
         })
-
 
     }
 

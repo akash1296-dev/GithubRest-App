@@ -1,38 +1,26 @@
 package com.example.githubrestdemo
 
-//import kotlinx.android.synthetic.main.avtivity_user_row.*
-//import kotlinx.android.synthetic.main.user_row.*
+
 import android.os.Bundle
-import android.util.Log.d
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.githubrestdemo.Adapter.UserAdapter
 import com.example.githubrestdemo.Fragments.EmojiFragment
-import com.example.githubrestdemo.Model.ApiService
-import com.example.githubrestdemo.Model.User
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-
+import com.example.githubrestdemo.Fragments.login as login
 class MainActivity : AppCompatActivity() {
-    private var recyclerView: RecyclerView? = null
 
+    //private var recyclerView: RecyclerView? = null
 
-    private val retrofit = Retrofit.Builder().baseUrl("https://api.github.com")
-        .addConverterFactory(GsonConverterFactory.create()).build()
+    /*private val retrofit = Retrofit.Builder().baseUrl("https://api.github.com")
+        .addConverterFactory(GsonConverterFactory.create()).build()*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        loadFragmentLogin(login())
 
-        recyclerView = findViewById(R.id.recyclerView)
+        //recyclerView = findViewById(R.id.recyclerView)
 
-        val api = retrofit.create(ApiService::class.java)
+        /*val api = retrofit.create(ApiService::class.java)
         api.fetchAllUsers().enqueue(object : Callback<List<User>> {
 
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
@@ -43,30 +31,34 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 d("aakash", "onFailure")
             }
-
-
         })
-
+*/
         // ----------------------------------------------------------------
         //-------------------------------------------------------------------
         /*val users = mutableListOf<User>()
         for(i in 0..100) {
             users.add(User("Aakash", "Yadav","akash1296@gmail.com","https://abc.com"))
         }*/
-        btnEvents.setOnClickListener {
+        btnEmojis.setOnClickListener {
             loadFragment(EmojiFragment())
         }
+    }
 
+    private fun loadFragmentLogin(loginFrag : login) {
+        val ft = supportFragmentManager.beginTransaction()
+        ft.add(R.id.rootLinear,loginFrag)
+        ft.addToBackStack(null)
+        ft.commit()
     }
 
     private fun loadFragment(emojiFragment: EmojiFragment) {
         val ft = supportFragmentManager.beginTransaction()
         //ft.replace(R.id.root, emojiFragment)
-        ft.replace(R.id.root, emojiFragment)
+        ft.replace(R.id.rootLinear, emojiFragment)
+        //frameLogin.visibility = View.GONE
         ft.addToBackStack(null)
-        recyclerView?.visibility = View.GONE
+        //recyclerView?.visibility = View.GONE
         ft.commit()
-
     }
 
     /*fun showDetails( v : View1) {
@@ -79,13 +71,13 @@ class MainActivity : AppCompatActivity() {
 
     }*/
 
-    private fun showData(users: List<User>) {
+    /*private fun showData(users: List<User>) {
         recyclerView?.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = UserAdapter(users)
         }
 
-    }
+    }*/
 
     companion object {
         const val TAG = "MainActivity"

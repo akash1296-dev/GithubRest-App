@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubrestdemo.Adapter.EmojiAdapter
@@ -25,7 +26,6 @@ import kotlin.math.log
 
 class EmojiFragment : Fragment() {
 
-    private var recyclerView: RecyclerView? = null
     val TAG = "EmojiFragment"
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,14 +63,12 @@ class EmojiFragment : Fragment() {
                 val totalSize = values?.size
                 Log.d(TAG,"value size is $totalSize")
 
-
                 showEmoji(values)
 
                 /*hashMap?.keys?.forEach { key ->
                     Log.d(TAG, "$key => ${hashMap[key]}")
                 }*/
             }
-
         })
     }
 
@@ -89,10 +87,9 @@ class EmojiFragment : Fragment() {
     }
 
     private fun showEmoji(body: ArrayList<String>) {
-        rvEmojis.layoutManager = LinearLayoutManager(context)
+        //rvEmojis.layoutManager = LinearLayoutManager(context)
+        rvEmojis.layoutManager = GridLayoutManager(context,4)
         rvEmojis.adapter = EmojiAdapter(body)
-
-
 
         /*recyclerView?.apply {
             Log.d("frag:RespbodyisRec: ", "$body")
@@ -103,5 +100,4 @@ class EmojiFragment : Fragment() {
     /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }*/
-
 }
