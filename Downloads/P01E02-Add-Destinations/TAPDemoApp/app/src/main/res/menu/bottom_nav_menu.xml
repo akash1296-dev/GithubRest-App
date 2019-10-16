@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_community"
+        android:icon="@mipmap/ic_launcher"
+        android:title="Community" />
+
+    <item
+        android:id="@+id/navigation_articles"
+        android:icon="@android:drawable/btn_star"
+        android:title="Articles"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/navigation_main"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Main"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/navigation_media"
+        android:icon="@android:drawable/ic_media_pause"
+        android:title="Media" />
+
+    <item
+        android:id="@+id/navigation_notif"
+        android:icon="@android:drawable/stat_notify_chat"
+        android:title="Notification" />
+</menu>
